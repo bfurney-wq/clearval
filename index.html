@@ -1,192 +1,1061 @@
-CV
-ClearVal
-Meet Val
-What It Does
-Integrations
-ROI
-Request Demo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClearVal — AI Appraisal Intelligence for Lenders</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-Works with your existing systems
-The AI layer your appraisal desk is missing.
-ClearVal connects to Encompass, Reggora, Mercury, and the tools you already use — then adds AI-powered QC, instant guideline answers, and automated compliance your team can't get anywhere else.
-Request a Demo Meet Val, your AI copilot ↓
+  :root {
+    --blue: #2563EB;
+    --blue-light: #3B82F6;
+    --blue-dark: #1D4ED8;
+    --blue-pale: #EFF6FF;
+    --blue-glow: rgba(37, 99, 235, 0.12);
+    --dark: #0F172A;
+    --gray-900: #1E293B;
+    --gray-700: #334155;
+    --gray-500: #64748B;
+    --gray-400: #94A3B8;
+    --gray-300: #CBD5E1;
+    --gray-200: #E2E8F0;
+    --gray-100: #F1F5F9;
+    --gray-50: #F8FAFC;
+    --white: #FFFFFF;
+    --green: #10B981;
+    --green-light: #34D399;
+    --amber: #F59E0B;
+    --red: #EF4444;
+    --purple: #8B5CF6;
+    --purple-light: #A78BFA;
+  }
 
-Encompass
+  html { scroll-behavior: smooth; }
 
-Reggora
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--dark);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-Mercury
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+  .nav-inner {
+    max-width: 1140px; margin: 0 auto; padding: 0 32px;
+    height: 68px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--dark); }
+  .logo-mark {
+    width: 34px; height: 34px; background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 14px;
+  }
+  .logo-text { font-weight: 700; font-size: 19px; letter-spacing: -0.5px; }
+  .logo-text span { color: var(--blue); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { text-decoration: none; color: var(--gray-500); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--dark); }
 
-Your AMCs
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 22px; border-radius: 12px; font-size: 14px; font-weight: 600;
+    text-decoration: none; transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: var(--blue); color: white;
+    box-shadow: 0 1px 3px rgba(37,99,235,0.3);
+  }
+  .btn-primary:hover { background: var(--blue-dark); box-shadow: 0 6px 20px rgba(37,99,235,0.3); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--gray-700); border: 1.5px solid var(--gray-200); }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
+  .btn-ghost { background: none; color: var(--gray-500); font-weight: 500; }
+  .btn-ghost:hover { color: var(--blue); }
 
-MLS / Data
+  /* ── SECTIONS ── */
+  section { padding: 120px 32px; }
+  .container { max-width: 1140px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--blue); margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(32px, 4vw, 48px); font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.1; color: var(--dark); margin-bottom: 20px;
+  }
+  .section-sub { font-size: 18px; color: var(--gray-500); line-height: 1.7; max-width: 560px; }
+  .text-center { text-align: center; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
 
+  /* ── HERO ── */
+  .hero {
+    padding: 170px 32px 110px; text-align: center;
+    background: linear-gradient(180deg, var(--blue-pale) 0%, var(--white) 100%);
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+    width: 1000px; height: 1000px;
+    background: radial-gradient(circle, rgba(37,99,235,0.07) 0%, rgba(139,92,246,0.04) 40%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px 6px 10px; background: var(--white);
+    border: 1px solid var(--gray-200); border-radius: 100px;
+    font-size: 13px; font-weight: 500; color: var(--gray-700);
+    margin-bottom: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.4; transform:scale(0.85); } }
+  .hero h1 {
+    font-size: clamp(42px, 5.5vw, 68px); font-weight: 800;
+    letter-spacing: -2.5px; line-height: 1.06; color: var(--dark); margin-bottom: 24px;
+  }
+  .hero h1 .highlight {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero > .container > p {
+    font-size: 19px; color: var(--gray-500); max-width: 580px;
+    margin: 0 auto 40px; line-height: 1.7;
+  }
+  .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 72px; }
+  .hero-ctas .btn-primary { padding: 14px 32px; font-size: 15px; }
 
+  /* ── HERO — INTEGRATION DIAGRAM ── */
+  .hero-diagram {
+    max-width: 820px; margin: 0 auto;
+    position: relative;
+  }
+  .diagram-row {
+    display: flex; align-items: center; justify-content: center; gap: 24px;
+    margin-bottom: 20px;
+  }
+  .diagram-tool {
+    display: flex; align-items: center; gap: 8px;
+    padding: 10px 18px; background: var(--white);
+    border: 1px solid var(--gray-200); border-radius: 12px;
+    font-size: 13px; font-weight: 600; color: var(--gray-700);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .diagram-tool:hover { border-color: var(--blue); box-shadow: 0 4px 16px var(--blue-glow); transform: translateY(-2px); }
+  .diagram-tool .tool-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .diagram-arrows {
+    display: flex; align-items: center; justify-content: center;
+    gap: 40px; margin: 12px 0;
+    color: var(--gray-300); font-size: 20px;
+  }
+  .diagram-arrow-line {
+    width: 2px; height: 28px; background: linear-gradient(180deg, var(--gray-200), var(--blue));
+    border-radius: 1px;
+  }
+  .diagram-val {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding: 20px 36px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    border-radius: 16px; color: white;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.3), 0 0 60px rgba(139,92,246,0.1);
+    max-width: 320px;
+    position: relative;
+    z-index: 2;
+  }
+  .diagram-val-avatar {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px;
+  }
+  .diagram-val-text h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+  .diagram-val-text p { font-size: 11px; opacity: 0.8; font-weight: 500; }
+  .diagram-arrows-down {
+    display: flex; align-items: center; justify-content: center;
+    gap: 60px; margin: 12px 0;
+    color: var(--gray-300);
+  }
+  .diagram-output-row {
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .diagram-output {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 16px; background: var(--blue-pale);
+    border: 1px solid rgba(37,99,235,0.15); border-radius: 10px;
+    font-size: 12px; font-weight: 600; color: var(--blue);
+  }
 
+  /* ── CHAT DEMO SECTION ── */
+  .meet-val {
+    background: linear-gradient(180deg, #070B14 0%, #0F172A 100%);
+    padding: 120px 32px; position: relative; overflow: hidden;
+  }
+  .meet-val::before {
+    content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(139,92,246,0.04) 40%, transparent 70%);
+    pointer-events: none;
+  }
+  .meet-val .section-label { color: var(--blue-light); }
+  .meet-val .section-title { color: white; }
+  .meet-val .section-sub { color: var(--gray-400); }
+  .val-layout {
+    display: grid; grid-template-columns: 1fr 1.1fr;
+    gap: 72px; align-items: center; margin-top: 56px;
+  }
+  .val-intro {}
+  .val-name-row { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .val-big-avatar {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 800; font-size: 20px;
+    box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+  }
+  .val-name-text h3 { font-size: 22px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+  .val-name-text p { font-size: 13px; color: var(--gray-400); }
+  .val-desc { font-size: 17px; color: var(--gray-300); line-height: 1.75; margin-bottom: 28px; }
+  .val-capabilities { display: flex; flex-direction: column; gap: 12px; }
+  .val-cap {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px; background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+    transition: all 0.25s; cursor: pointer;
+  }
+  .val-cap:hover { background: rgba(37,99,235,0.08); border-color: rgba(37,99,235,0.2); transform: translateX(4px); }
+  .val-cap.active { background: rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.3); }
+  .val-cap-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .val-cap h4 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 2px; }
+  .val-cap p { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
 
+  /* ── CHAT WINDOW ── */
+  .val-demo {
+    background: #080E1C; border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 60px rgba(37,99,235,0.06);
+  }
+  .val-demo-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .val-demo-header-left { display: flex; align-items: center; gap: 10px; }
+  .val-demo-avatar {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 13px;
+  }
+  .val-demo-name { font-size: 13px; font-weight: 600; color: white; }
+  .val-demo-tag {
+    font-size: 10px; color: var(--green); display: flex; align-items: center; gap: 4px;
+  }
+  .val-demo-tag::before {
+    content:''; width:5px; height:5px; border-radius:50%; background:var(--green); animation: pulse 2s infinite;
+  }
+  .val-demo-tabs { display: flex; gap: 3px; }
+  .val-demo-tab {
+    padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 500;
+    color: var(--gray-400); cursor: pointer; transition: all 0.2s;
+    background: none; border: none; font-family: inherit;
+  }
+  .val-demo-tab:hover { color: var(--gray-200); }
+  .val-demo-tab.active { background: rgba(37,99,235,0.15); color: var(--blue-light); }
+  .val-demo-body {
+    padding: 18px; min-height: 360px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .val-demo-msg {
+    max-width: 90%; padding: 11px 15px; border-radius: 14px;
+    font-size: 13px; line-height: 1.6;
+    opacity: 0; transform: translateY(12px);
+    animation: chatIn 0.5s ease forwards;
+  }
+  .val-demo-msg:nth-child(1) { animation-delay: 0.2s; }
+  .val-demo-msg:nth-child(2) { animation-delay: 0.7s; }
+  .val-demo-msg:nth-child(3) { animation-delay: 1.4s; }
+  .val-demo-msg:nth-child(4) { animation-delay: 2.0s; }
+  @keyframes chatIn { to { opacity:1; transform:translateY(0); } }
+  .val-demo-msg.user {
+    align-self: flex-end; background: var(--blue); color: white; border-bottom-right-radius: 4px;
+  }
+  .val-demo-msg.val {
+    align-self: flex-start; background: rgba(255,255,255,0.06); color: var(--gray-200); border-bottom-left-radius: 4px;
+  }
+  .val-source {
+    display: inline-flex; align-items: center; gap: 4px;
+    margin-top: 8px; padding: 3px 8px; background: rgba(37,99,235,0.15);
+    border-radius: 6px; font-size: 10px; color: var(--blue-light); font-weight: 500;
+  }
+  .val-hl { color: var(--green-light); font-weight: 600; }
+  .val-warn { color: #FBBF24; font-weight: 600; }
+  .val-demo-input {
+    margin-top: auto; padding: 10px 14px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .val-demo-input span { flex:1; font-size:12px; color:var(--gray-500); }
+  .val-demo-input-btn {
+    width:30px; height:30px; border-radius:8px; background:var(--blue);
+    border:none; display:flex; align-items:center; justify-content:center;
+    color:white; font-size:15px;
+  }
 
-V
-Val AI
-Intelligence layer
+  /* ── HOW IT WORKS (simple) ── */
+  .how-it-works { background: var(--white); }
+  .hiw-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin-top: 56px;
+  }
+  .hiw-card {
+    text-align: center; padding: 36px 28px;
+    background: var(--gray-50); border: 1px solid var(--gray-100);
+    border-radius: 20px; transition: all 0.3s;
+  }
+  .hiw-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.05); }
+  .hiw-number {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--blue); color: white;
+    font-size: 22px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+  }
+  .hiw-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+  .hiw-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
 
+  /* ── INTEGRATIONS ── */
+  .integrations { background: var(--gray-50); }
+  .int-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 16px; margin-top: 48px;
+  }
+  .int-card {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px 16px; background: var(--white);
+    border: 1px solid var(--gray-200); border-radius: 14px;
+    transition: all 0.25s; gap: 10px;
+  }
+  .int-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px var(--blue-glow); transform: translateY(-2px); }
+  .int-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700;
+  }
+  .int-card span { font-size: 12px; font-weight: 600; color: var(--gray-700); text-align: center; }
 
+  /* ── WHAT VAL DOES (features) ── */
+  .what-val-does { background: var(--white); }
+  .wvd-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 20px; margin-top: 56px;
+  }
+  .wvd-card {
+    padding: 28px; background: var(--gray-50);
+    border: 1px solid var(--gray-100); border-radius: 16px;
+    transition: all 0.3s;
+  }
+  .wvd-card:hover { border-color: var(--blue); box-shadow: 0 8px 32px var(--blue-glow); transform: translateY(-3px); }
+  .wvd-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 16px;
+  }
+  .wvd-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.2px; }
+  .wvd-card p { font-size: 13px; color: var(--gray-500); line-height: 1.65; }
 
+  /* ── UAD BANNER ── */
+  .uad-banner {
+    padding: 100px 32px;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+    position: relative; overflow: hidden;
+  }
+  .uad-banner::before {
+    content:''; position:absolute; top:-50%; right:-10%;
+    width:500px; height:500px;
+    background:radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .uad-inner {
+    max-width: 1140px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .uad-deadline {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 14px; background:rgba(239,68,68,0.12);
+    border:1px solid rgba(239,68,68,0.2); border-radius:100px;
+    font-size:11px; font-weight:600; color:#F87171;
+    margin-bottom:20px; letter-spacing:0.5px;
+  }
+  .uad-deadline-dot { width:6px; height:6px; border-radius:50%; background:#EF4444; animation:pulse 1.5s infinite; }
+  .uad-content h2 {
+    font-size:clamp(28px,3.5vw,38px); font-weight:800; color:white;
+    letter-spacing:-1.5px; line-height:1.15; margin-bottom:16px;
+  }
+  .uad-content h2 span { color: var(--blue-light); }
+  .uad-content > p { font-size:15px; color:var(--gray-400); line-height:1.7; margin-bottom:24px; max-width:460px; }
+  .uad-features { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .uad-feat { display:flex; align-items:flex-start; gap:8px; font-size:13px; color:var(--gray-200); font-weight:500; }
+  .uad-feat-icon { color:var(--blue-light); font-size:13px; margin-top:2px; flex-shrink:0; }
+  .uad-visual {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+    border-radius:16px; padding:28px;
+  }
+  .uad-countdown { text-align:center; margin-bottom:24px; }
+  .uad-countdown-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--gray-400); margin-bottom:12px; }
+  .uad-countdown-boxes { display:flex; gap:12px; justify-content:center; }
+  .uad-countdown-box {
+    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+    border-radius:12px; padding:12px 16px; text-align:center; min-width:72px;
+  }
+  .uad-countdown-num { font-size:28px; font-weight:800; color:white; letter-spacing:-1px; line-height:1; }
+  .uad-countdown-unit { font-size:10px; font-weight:600; color:var(--gray-400); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+  .uad-progress-section { margin-top:20px; }
+  .uad-progress-label { display:flex; justify-content:space-between; font-size:12px; color:var(--gray-400); margin-bottom:8px; font-weight:500; }
+  .uad-progress-bar { height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; margin-bottom:16px; }
+  .uad-progress-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--blue) 0%,var(--blue-light) 100%); }
+  .uad-checklist { display:flex; flex-direction:column; gap:8px; }
+  .uad-check-item { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--gray-200); }
+  .uad-check-icon { width:18px; height:18px; border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0; }
+  .uad-check-icon.done { background:rgba(16,185,129,0.2); color:#34D399; }
+  .uad-check-icon.todo { background:rgba(255,255,255,0.06); color:var(--gray-400); }
 
-✓ Instant QC ✓ Guideline Answers ✓ Bias Screening ✓ ROV Drafting ✓ Compliance Docs
-✧ YOUR AI COPILOT
-Meet Val.
-Val reads every appraisal that flows through your existing systems. Answers any guideline question in seconds. Catches what humans miss. All with zero disruption to the tools your team already uses.
-V
-Val
-ClearVal AI Copilot
-Val doesn't replace Reggora or Encompass — Val makes the people using them faster, smarter, and bulletproof on compliance. Ask anything. Get the answer with the exact citation. Done.
-🔍
-Underwriters
-AI reviews the appraisal before you do. Flags issues. Cites the guideline. You just confirm.
-💬
-Loan Officers
-Low appraisal? Val explains the options and drafts the ROV — in plain English.
-🏠
-Staff Appraisers
-Comp verification, time adjustments, and compliance checks before you hit submit.
-🛡
-Compliance
-Bias screening, audit docs, and AIR verification — generated, not hand-typed.
-V
-Val
-Ready
-UW
-LO
-Appraiser
-Compliance
-I just got the appraisal for 8 Harbor View. Reggora shows it's flagged — what's wrong?
-I pulled it from Reggora and ran QC. Found 3 issues:
+  /* ── COMPARISON ── */
+  .comparison { background: var(--gray-50); }
+  .comparison-table {
+    max-width:760px; margin:56px auto 0; border-radius:16px;
+    overflow:hidden; border:1px solid var(--gray-200); background:var(--white);
+  }
+  .comparison-row { display:grid; grid-template-columns:2fr 1fr 1fr; border-bottom:1px solid var(--gray-100); }
+  .comparison-row:last-child { border-bottom:none; }
+  .comparison-row.header { background:var(--dark); }
+  .comparison-cell { padding:14px 20px; font-size:13px; color:var(--gray-700); display:flex; align-items:center; }
+  .comparison-row.header .comparison-cell { color:white; font-weight:600; font-size:12px; }
+  .comparison-cell:nth-child(2),.comparison-cell:nth-child(3) { text-align:center; justify-content:center; }
+  .comparison-row:nth-child(even):not(.header) { background:var(--gray-50); }
+  .comp-yes { color:var(--green); font-weight:600; }
+  .comp-no { color:var(--gray-400); }
+  .comp-partial { color:var(--amber); font-weight:600; }
 
-1. Comp #2 is 3.1 mi away — exceeds suburban guideline
-2. GLA shows 2,840 sqft but county records say 2,680 — 5.9% gap
-3. No time adjustment despite 6.1% market appreciation 📚 Fannie Mae B4-1.3-09
-Draft a revision request I can send back through Reggora.
-Done. Revision letter drafted with all 3 findings and guideline citations. Ready in your Reggora queue for review and send.
-Ask Val anything about appraisals...
-↑
-SIMPLE AS 1, 2, 3
-It just plugs in
-ClearVal connects to what you already use. No rip-and-replace. No migration. No retraining your team on a new platform.
-1
-Connect your systems
-We plug into Encompass, Reggora, Mercury, or whatever LOS and AMC tools you run. API connection takes days, not months.
-2
-Val starts learning
-Val reads every appraisal that flows through your pipeline. Learns your QC preferences, your compliance rules, your team's workflow.
-3
-Your team gets smarter
-Underwriters get instant QC. LOs get status answers. Appraisers get comp checks. Compliance gets audit docs. Everyone keeps using their tools.
-INTEGRATIONS
-Works with everything you already run
-ClearVal isn't another platform to manage. It's the AI that makes your existing platforms smarter.
-E
-Encompass
-R
-Reggora
-M
-Mercury
-E
-Empower
-U
-UCDP
-A
-Any AMC
-Custom integrations available · REST API · Webhook support
-WHAT VAL DOES
-The intelligence your tools don't have
-Your LOS tracks loans. Your AMC manages orders. Val adds the brainpower neither one has.
-⚡
-Instant QC on every file
-200+ automated checks run the moment an appraisal hits your system. UAD compliance, GLA verification, comp validity, time adjustments — all flagged with guideline citations.
-💬
-Any guideline, any time
-Ask Val any Fannie Mae, Freddie Mac, FHA, or USPAP question. Get the answer with the exact section reference in seconds. No more Googling.
-🛡
-Bias & fair lending screening
-Every appraisal is automatically screened for bias indicators. AVM cross-referencing, census tract analysis, and documented findings for exam defense.
-📝
-ROV drafting & tracking
-Val drafts reconsideration of value requests with supporting comps, manages the process, and creates a complete audit trail — all GSE compliant.
-📊
-Appraiser scorecards
-Performance data on every appraiser touching your files. Quality scores, revision rates, turnaround times. Finally — data to manage your panel.
-📄
-Compliance on autopilot
-Appraiser independence documentation, communication logs, and audit packages generated automatically. Always exam-ready. Zero manual work.
+  /* ── ROI ── */
+  .roi { background: var(--white); }
+  .roi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px; }
+  .roi-card {
+    background:var(--blue-pale); border-radius:16px; padding:32px; text-align:center;
+    transition:all 0.3s;
+  }
+  .roi-card:hover { transform:translateY(-2px); box-shadow:0 8px 32px var(--blue-glow); }
+  .roi-number { font-size:48px; font-weight:800; color:var(--blue); letter-spacing:-2px; line-height:1; margin-bottom:8px; }
+  .roi-label { font-size:15px; font-weight:600; color:var(--dark); margin-bottom:4px; }
+  .roi-desc { font-size:13px; color:var(--gray-500); }
 
-DEADLINE: NOVEMBER 2, 2026
-UAD 3.6 is coming. Val is ready. Are you?
-The biggest appraisal data standard change in a decade hits in months. Val already knows every new field, every new rule, and will guide your team through the transition.
-✓
-Pre-built 3.6 validation rules
-✓
-2.6 vs 3.6 field mapping
-✓
-UCDP submission checks
-✓
-Val-guided staff training
-✓
-Hybrid & desktop support
-✓
-New form routing (1004, 1073)
-TIME UNTIL UAD 3.6 DEADLINE
-7
-MONTHS
-2
-DAYS
-Your UAD 3.6 Readiness
-78%
+  /* ── CTA ── */
+  .cta-section {
+    background:linear-gradient(180deg, #070B14 0%, #0F172A 100%);
+    text-align:center; padding:120px 32px; position:relative; overflow:hidden;
+  }
+  .cta-section::before {
+    content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%);
+    width:600px; height:600px;
+    background:radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .cta-section .section-title { color:white; }
+  .cta-section .section-sub { color:var(--gray-400); }
+  .cta-buttons { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:40px; }
+  .cta-buttons .btn-secondary { border-color:rgba(255,255,255,0.15); color:var(--gray-200); }
+  .cta-buttons .btn-secondary:hover { border-color:var(--blue); color:var(--blue-light); background:rgba(37,99,235,0.1); }
 
-✓ New data field mapping configured ✓ QC rules updated for 3.6 ✓ UCDP format validated ○ Appraiser panel notified ○ Staff training (62%)
-THE DIFFERENCE
-What your tools don't do
-Encompass tracks loans. Reggora manages orders. Val adds the intelligence layer on top of both.
-Capability Val AI Your Current Tools AI-powered appraisal QC
-✓
-✕
-Instant guideline answers with citations
-✓
-✕
-Automated bias screening
-✓
-✕
-ROV drafting with comps
-✓
-✕
-Appraiser independence audit trail
-✓
-~ partial
-Appraiser performance analytics
-✓
-~ basic
-UAD 3.6 readiness & training
-✓
-✕
-Works with existing tools
-✓ native
-✓ they are the tools
-THE BUSINESS CASE
-Pays for itself in 90 days
-Val saves time, catches errors, and protects you from regulatory risk — measurably.
-$1.2M
-Annual savings per 10K files
-Faster reviews, fewer revisions, lower repurchase risk
-4.2x
-Underwriter throughput
-Val pre-screens every file — UWs focus on exceptions only
-0
-Fair lending findings
-Automated bias screening + documented ROV = bulletproof
-GET STARTED
-Ready to meet Val?
-30-minute demo. We connect to your systems and show you exactly what Val catches on your own files.
-Request a Demo Download One-Pager
-ClearVal by Absolute Value Management
-Privacy
-Terms
-Contact
+  /* ── FOOTER ── */
+  footer { background:#070B14; border-top:1px solid rgba(255,255,255,0.04); padding:40px 32px; }
+  .footer-inner { max-width:1140px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+  .footer-text { font-size:13px; color:var(--gray-500); }
+  .footer-links { display:flex; gap:24px; }
+  .footer-links a { font-size:13px; color:var(--gray-400); text-decoration:none; transition:color 0.2s; }
+  .footer-links a:hover { color:white; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:900px) {
+    .val-layout { grid-template-columns:1fr; gap:48px; }
+    .uad-inner { grid-template-columns:1fr; }
+    .uad-features { grid-template-columns:1fr; }
+    .hiw-grid { grid-template-columns:1fr; }
+    .int-grid { grid-template-columns:repeat(3,1fr); }
+    .wvd-grid { grid-template-columns:1fr; }
+    .roi-grid { grid-template-columns:1fr; }
+    .diagram-row { flex-wrap:wrap; }
+  }
+  @media (max-width:600px) {
+    section { padding:80px 20px; }
+    .nav-links a:not(.btn) { display:none; }
+    .hero h1 { font-size:34px; letter-spacing:-1.5px; }
+    .hero-ctas { flex-direction:column; }
+    .int-grid { grid-template-columns:repeat(2,1fr); }
+    .diagram-row { gap:12px; }
+    .diagram-tool { font-size:11px; padding:8px 12px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity:0; transform:translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">CV</div>
+      <div class="logo-text">Clear<span>Val</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="#val">Meet Val</a>
+      <a href="#what">What It Does</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#roi">ROI</a>
+      <a href="#cta" class="btn btn-primary">Request Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- HERO -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Works with your existing systems
+    </div>
+    <h1>The AI layer your<br>appraisal desk is <span class="highlight">missing.</span></h1>
+    <p>ClearVal connects to Encompass, Reggora, Mercury, and the tools you already use — then adds AI-powered QC, instant guideline answers, and automated compliance your team can't get anywhere else.</p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn btn-primary">Request a Demo</a>
+      <a href="#val" class="btn btn-ghost">Meet Val, your AI copilot &darr;</a>
+    </div>
+
+    <!-- Integration Diagram -->
+    <div class="hero-diagram fade-up">
+      <!-- Top row: existing tools -->
+      <div class="diagram-row">
+        <div class="diagram-tool"><div class="tool-dot" style="background:#4F46E5;"></div> Encompass</div>
+        <div class="diagram-tool"><div class="tool-dot" style="background:#059669;"></div> Reggora</div>
+        <div class="diagram-tool"><div class="tool-dot" style="background:#D97706;"></div> Mercury</div>
+        <div class="diagram-tool"><div class="tool-dot" style="background:#DC2626;"></div> Your AMCs</div>
+        <div class="diagram-tool"><div class="tool-dot" style="background:#7C3AED;"></div> MLS / Data</div>
+      </div>
+
+      <!-- Arrows down -->
+      <div class="diagram-arrows">
+        <div class="diagram-arrow-line"></div>
+        <div class="diagram-arrow-line"></div>
+        <div class="diagram-arrow-line"></div>
+        <div class="diagram-arrow-line"></div>
+        <div class="diagram-arrow-line"></div>
+      </div>
+
+      <!-- Val in the center -->
+      <div class="diagram-val">
+        <div class="diagram-val-avatar">V</div>
+        <div class="diagram-val-text">
+          <h3>Val AI</h3>
+          <p>Intelligence layer</p>
+        </div>
+      </div>
+
+      <!-- Arrows down -->
+      <div class="diagram-arrows-down">
+        <div class="diagram-arrow-line" style="background:linear-gradient(180deg, var(--blue), var(--green));"></div>
+        <div class="diagram-arrow-line" style="background:linear-gradient(180deg, var(--blue), var(--green));"></div>
+        <div class="diagram-arrow-line" style="background:linear-gradient(180deg, var(--blue), var(--green));"></div>
+        <div class="diagram-arrow-line" style="background:linear-gradient(180deg, var(--blue), var(--green));"></div>
+      </div>
+
+      <!-- Bottom: what comes out -->
+      <div class="diagram-output-row">
+        <div class="diagram-output">&#10003; Instant QC</div>
+        <div class="diagram-output">&#10003; Guideline Answers</div>
+        <div class="diagram-output">&#10003; Bias Screening</div>
+        <div class="diagram-output">&#10003; ROV Drafting</div>
+        <div class="diagram-output">&#10003; Compliance Docs</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- MEET VAL -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="meet-val" id="val">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">&#10023; Your AI Copilot</span>
+      <h2 class="section-title">Meet Val.</h2>
+      <p class="section-sub mx-auto">Val reads every appraisal that flows through your existing systems. Answers any guideline question in seconds. Catches what humans miss. All with zero disruption to the tools your team already uses.</p>
+    </div>
+
+    <div class="val-layout">
+      <div class="val-intro fade-up">
+        <div class="val-name-row">
+          <div class="val-big-avatar">V</div>
+          <div class="val-name-text">
+            <h3>Val</h3>
+            <p>ClearVal AI Copilot</p>
+          </div>
+        </div>
+        <p class="val-desc">Val doesn't replace Reggora or Encompass — Val makes the people using them faster, smarter, and bulletproof on compliance. Ask anything. Get the answer with the exact citation. Done.</p>
+
+        <div class="val-capabilities">
+          <div class="val-cap active" data-demo="underwriter">
+            <div class="val-cap-icon" style="background:rgba(37,99,235,0.15);">&#128269;</div>
+            <div>
+              <h4>Underwriters</h4>
+              <p>AI reviews the appraisal before you do. Flags issues. Cites the guideline. You just confirm.</p>
+            </div>
+          </div>
+          <div class="val-cap" data-demo="lo">
+            <div class="val-cap-icon" style="background:rgba(245,158,11,0.15);">&#128172;</div>
+            <div>
+              <h4>Loan Officers</h4>
+              <p>Low appraisal? Val explains the options and drafts the ROV — in plain English.</p>
+            </div>
+          </div>
+          <div class="val-cap" data-demo="appraiser">
+            <div class="val-cap-icon" style="background:rgba(16,185,129,0.15);">&#127968;</div>
+            <div>
+              <h4>Staff Appraisers</h4>
+              <p>Comp verification, time adjustments, and compliance checks before you hit submit.</p>
+            </div>
+          </div>
+          <div class="val-cap" data-demo="compliance">
+            <div class="val-cap-icon" style="background:rgba(239,68,68,0.15);">&#128737;</div>
+            <div>
+              <h4>Compliance</h4>
+              <p>Bias screening, audit docs, and AIR verification — generated, not hand-typed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chat Demo -->
+      <div class="val-demo fade-up">
+        <div class="val-demo-header">
+          <div class="val-demo-header-left">
+            <div class="val-demo-avatar">V</div>
+            <div><div class="val-demo-name">Val</div><div class="val-demo-tag">Ready</div></div>
+          </div>
+          <div class="val-demo-tabs">
+            <button class="val-demo-tab active" onclick="switchDemo('underwriter')">UW</button>
+            <button class="val-demo-tab" onclick="switchDemo('lo')">LO</button>
+            <button class="val-demo-tab" onclick="switchDemo('appraiser')">Appraiser</button>
+            <button class="val-demo-tab" onclick="switchDemo('compliance')">Compliance</button>
+          </div>
+        </div>
+
+        <div class="val-demo-body" id="demo-underwriter">
+          <div class="val-demo-msg user">I just got the appraisal for 8 Harbor View. Reggora shows it's flagged — what's wrong?</div>
+          <div class="val-demo-msg val">
+            I pulled it from Reggora and ran QC. Found <span class="val-hl">3 issues</span>:<br><br>
+            <strong>1.</strong> Comp #2 is 3.1 mi away — exceeds suburban guideline<br>
+            <strong>2.</strong> GLA shows 2,840 sqft but county records say 2,680 — <span class="val-warn">5.9% gap</span><br>
+            <strong>3.</strong> No time adjustment despite 6.1% market appreciation
+            <span class="val-source">&#128218; Fannie Mae B4-1.3-09</span>
+          </div>
+          <div class="val-demo-msg user">Draft a revision request I can send back through Reggora.</div>
+          <div class="val-demo-msg val">Done. Revision letter drafted with all 3 findings and guideline citations. Ready in your Reggora queue for review and send.</div>
+        </div>
+
+        <div class="val-demo-body" id="demo-lo" style="display:none;">
+          <div class="val-demo-msg user">My borrower's appraisal on Elm St came in low. What are our options?</div>
+          <div class="val-demo-msg val">
+            <strong>Purchase price:</strong> $349,000<br>
+            <strong>Appraised value:</strong> $329,000<br>
+            <strong>Gap:</strong> <span class="val-warn">$20,000</span><br><br>
+            Three options: renegotiate price, borrower covers the gap, or file an ROV. I found <span class="val-hl">2 comps within 0.3 miles</span> that support a higher value. Want me to draft the ROV?
+            <span class="val-source">&#128218; MLS comparable data</span>
+          </div>
+          <div class="val-demo-msg user">Yes, draft it. And give me something to tell the borrower.</div>
+          <div class="val-demo-msg val">ROV drafted with supporting comps. Here's your borrower talking point: "We've found comparable sales that support a higher value and have formally requested the appraiser review them. Typical turnaround is <span class="val-hl">3-5 business days</span>."</div>
+        </div>
+
+        <div class="val-demo-body" id="demo-appraiser" style="display:none;">
+          <div class="val-demo-msg user">Check my comps for the Austin property before I submit through Mercury.</div>
+          <div class="val-demo-msg val">
+            Pulled your report from Mercury. Checking comps:<br><br>
+            <span class="val-hl">&#10003; Comp #1</span> — 0.4 mi, 2 months ago. Clean.<br>
+            <span class="val-hl">&#10003; Comp #2</span> — 0.7 mi, 4 months, 120 sqft larger. Adjustment needed.<br>
+            <span class="val-warn">&#9888; Comp #3</span> — 8 months old. Needs time adjustment of approx. <span class="val-hl">+3.4% ($11,200)</span> based on 5.1% annual appreciation.
+            <span class="val-source">&#128218; Fannie Mae B4-1.3-06</span>
+          </div>
+          <div class="val-demo-msg user">Apply those adjustments and run it through UAD check.</div>
+          <div class="val-demo-msg val">Adjustments applied. UAD validation: <span class="val-hl">97/100</span>. One minor note — condition rating C3 on Comp #2 doesn't match MLS remarks. Otherwise clean to submit.</div>
+        </div>
+
+        <div class="val-demo-body" id="demo-compliance" style="display:none;">
+          <div class="val-demo-msg user">We got an ROV in a majority-minority tract. Walk me through exposure.</div>
+          <div class="val-demo-msg val">
+            Flagging for careful handling per <span class="val-hl">CFPB ROV guidance (May 2024)</span>:<br><br>
+            <strong>1.</strong> Appraised value is <span class="val-warn">12% below AVM range</span> for this tract<br>
+            <strong>2.</strong> Independence firewall — confirmed no production staff contacted appraiser<br>
+            <strong>3.</strong> Full communication log required for fair lending defense
+            <span class="val-source">&#128218; CFPB ROV Guidance, Fannie Mae LL-2024-04</span>
+          </div>
+          <div class="val-demo-msg user">Generate the audit package for this case.</div>
+          <div class="val-demo-msg val">Complete audit package compiled: ROV intake, communication logs, independence verification, bias screening, appraiser response timeline. <span class="val-hl">Exam-ready.</span> Saved to compliance dashboard.</div>
+        </div>
+
+        <div class="val-demo-input">
+          <span>Ask Val anything about appraisals...</span>
+          <button class="val-demo-input-btn">&#8593;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- HOW IT WORKS — dead simple -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="how-it-works" id="how">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">Simple As 1, 2, 3</span>
+      <h2 class="section-title">It just plugs in</h2>
+      <p class="section-sub mx-auto">ClearVal connects to what you already use. No rip-and-replace. No migration. No retraining your team on a new platform.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-card fade-up">
+        <div class="hiw-number">1</div>
+        <h3>Connect your systems</h3>
+        <p>We plug into Encompass, Reggora, Mercury, or whatever LOS and AMC tools you run. API connection takes days, not months.</p>
+      </div>
+      <div class="hiw-card fade-up">
+        <div class="hiw-number">2</div>
+        <h3>Val starts learning</h3>
+        <p>Val reads every appraisal that flows through your pipeline. Learns your QC preferences, your compliance rules, your team's workflow.</p>
+      </div>
+      <div class="hiw-card fade-up">
+        <div class="hiw-number">3</div>
+        <h3>Your team gets smarter</h3>
+        <p>Underwriters get instant QC. LOs get status answers. Appraisers get comp checks. Compliance gets audit docs. Everyone keeps using their tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- INTEGRATIONS -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="integrations" id="integrations">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">Integrations</span>
+      <h2 class="section-title">Works with everything<br>you already run</h2>
+      <p class="section-sub mx-auto">ClearVal isn't another platform to manage. It's the AI that makes your existing platforms smarter.</p>
+    </div>
+    <div class="int-grid fade-up">
+      <div class="int-card">
+        <div class="int-icon" style="background:#EDE9FE; color:#7C3AED;">E</div>
+        <span>Encompass</span>
+      </div>
+      <div class="int-card">
+        <div class="int-icon" style="background:#D1FAE5; color:#059669;">R</div>
+        <span>Reggora</span>
+      </div>
+      <div class="int-card">
+        <div class="int-icon" style="background:#FEF3C7; color:#D97706;">M</div>
+        <span>Mercury</span>
+      </div>
+      <div class="int-card">
+        <div class="int-icon" style="background:#DBEAFE; color:#2563EB;">E</div>
+        <span>Empower</span>
+      </div>
+      <div class="int-card">
+        <div class="int-icon" style="background:#FCE7F3; color:#DB2777;">U</div>
+        <span>UCDP</span>
+      </div>
+      <div class="int-card">
+        <div class="int-icon" style="background:#FEE2E2; color:#DC2626;">A</div>
+        <span>Any AMC</span>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px; font-size:14px; color:var(--gray-400);">Custom integrations available &middot; REST API &middot; Webhook support</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- WHAT VAL DOES -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="what-val-does" id="what">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">What Val Does</span>
+      <h2 class="section-title">The intelligence your tools<br>don't have</h2>
+      <p class="section-sub mx-auto">Your LOS tracks loans. Your AMC manages orders. Val adds the brainpower neither one has.</p>
+    </div>
+    <div class="wvd-grid">
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:var(--blue-pale);">&#9889;</div>
+        <h3>Instant QC on every file</h3>
+        <p>200+ automated checks run the moment an appraisal hits your system. UAD compliance, GLA verification, comp validity, time adjustments — all flagged with guideline citations.</p>
+      </div>
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:#FEF3C7;">&#128172;</div>
+        <h3>Any guideline, any time</h3>
+        <p>Ask Val any Fannie Mae, Freddie Mac, FHA, or USPAP question. Get the answer with the exact section reference in seconds. No more Googling.</p>
+      </div>
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:#ECFDF5;">&#128737;</div>
+        <h3>Bias &amp; fair lending screening</h3>
+        <p>Every appraisal is automatically screened for bias indicators. AVM cross-referencing, census tract analysis, and documented findings for exam defense.</p>
+      </div>
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:#FEE2E2;">&#128221;</div>
+        <h3>ROV drafting &amp; tracking</h3>
+        <p>Val drafts reconsideration of value requests with supporting comps, manages the process, and creates a complete audit trail — all GSE compliant.</p>
+      </div>
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:#EDE9FE;">&#128202;</div>
+        <h3>Appraiser scorecards</h3>
+        <p>Performance data on every appraiser touching your files. Quality scores, revision rates, turnaround times. Finally — data to manage your panel.</p>
+      </div>
+      <div class="wvd-card fade-up">
+        <div class="wvd-icon" style="background:#DBEAFE;">&#128196;</div>
+        <h3>Compliance on autopilot</h3>
+        <p>Appraiser independence documentation, communication logs, and audit packages generated automatically. Always exam-ready. Zero manual work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- UAD 3.6 BANNER -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="uad-banner fade-up">
+  <div class="uad-inner">
+    <div class="uad-content">
+      <div class="uad-deadline">
+        <div class="uad-deadline-dot"></div>
+        DEADLINE: NOVEMBER 2, 2026
+      </div>
+      <h2>UAD 3.6 is coming.<br><span>Val is ready. Are you?</span></h2>
+      <p>The biggest appraisal data standard change in a decade hits in months. Val already knows every new field, every new rule, and will guide your team through the transition.</p>
+      <div class="uad-features">
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> Pre-built 3.6 validation rules</div>
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> 2.6 vs 3.6 field mapping</div>
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> UCDP submission checks</div>
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> Val-guided staff training</div>
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> Hybrid &amp; desktop support</div>
+        <div class="uad-feat"><span class="uad-feat-icon">&#10003;</span> New form routing (1004, 1073)</div>
+      </div>
+    </div>
+    <div class="uad-visual">
+      <div class="uad-countdown">
+        <div class="uad-countdown-label">Time until UAD 3.6 deadline</div>
+        <div class="uad-countdown-boxes">
+          <div class="uad-countdown-box"><div class="uad-countdown-num" id="cd-months">7</div><div class="uad-countdown-unit">Months</div></div>
+          <div class="uad-countdown-box"><div class="uad-countdown-num" id="cd-days">2</div><div class="uad-countdown-unit">Days</div></div>
+        </div>
+      </div>
+      <div class="uad-progress-section">
+        <div class="uad-progress-label"><span>Your UAD 3.6 Readiness</span><span style="color:var(--blue-light);font-weight:600;">78%</span></div>
+        <div class="uad-progress-bar"><div class="uad-progress-fill" style="width:78%;"></div></div>
+      </div>
+      <div class="uad-checklist">
+        <div class="uad-check-item"><span class="uad-check-icon done">&#10003;</span> New data field mapping configured</div>
+        <div class="uad-check-item"><span class="uad-check-icon done">&#10003;</span> QC rules updated for 3.6</div>
+        <div class="uad-check-item"><span class="uad-check-icon done">&#10003;</span> UCDP format validated</div>
+        <div class="uad-check-item"><span class="uad-check-icon todo">&#9675;</span> Appraiser panel notified</div>
+        <div class="uad-check-item"><span class="uad-check-icon todo">&#9675;</span> Staff training (62%)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- COMPARISON -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="comparison">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">The Difference</span>
+      <h2 class="section-title">What your tools don't do</h2>
+      <p class="section-sub mx-auto">Encompass tracks loans. Reggora manages orders. Val adds the intelligence layer on top of both.</p>
+    </div>
+    <div class="comparison-table fade-up">
+      <div class="comparison-row header">
+        <div class="comparison-cell">Capability</div>
+        <div class="comparison-cell">Val AI</div>
+        <div class="comparison-cell">Your Current Tools</div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">AI-powered appraisal QC</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-no">&#10005;</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Instant guideline answers with citations</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-no">&#10005;</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Automated bias screening</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-no">&#10005;</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">ROV drafting with comps</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-no">&#10005;</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Appraiser independence audit trail</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-partial">~ partial</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Appraiser performance analytics</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-partial">~ basic</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">UAD 3.6 readiness &amp; training</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003;</span></div>
+        <div class="comparison-cell"><span class="comp-no">&#10005;</span></div>
+      </div>
+      <div class="comparison-row">
+        <div class="comparison-cell">Works with existing tools</div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003; native</span></div>
+        <div class="comparison-cell"><span class="comp-yes">&#10003; they are the tools</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- ROI -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="roi" id="roi">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label">The Business Case</span>
+      <h2 class="section-title">Pays for itself in 90 days</h2>
+      <p class="section-sub mx-auto">Val saves time, catches errors, and protects you from regulatory risk — measurably.</p>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-card fade-up">
+        <div class="roi-number">$1.2M</div>
+        <div class="roi-label">Annual savings per 10K files</div>
+        <div class="roi-desc">Faster reviews, fewer revisions, lower repurchase risk</div>
+      </div>
+      <div class="roi-card fade-up">
+        <div class="roi-number">4.2x</div>
+        <div class="roi-label">Underwriter throughput</div>
+        <div class="roi-desc">Val pre-screens every file — UWs focus on exceptions only</div>
+      </div>
+      <div class="roi-card fade-up">
+        <div class="roi-number">0</div>
+        <div class="roi-label">Fair lending findings</div>
+        <div class="roi-desc">Automated bias screening + documented ROV = bulletproof</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CTA -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <span class="section-label" style="color:var(--blue-light);">Get Started</span>
+    <h2 class="section-title" style="color:white;">Ready to meet Val?</h2>
+    <p class="section-sub mx-auto">30-minute demo. We connect to your systems and show you exactly what Val catches on your own files.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary" style="padding:16px 36px;font-size:16px;">Request a Demo</a>
+      <a href="#" class="btn btn-secondary">Download One-Pager</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-text">ClearVal by Absolute Value Management</div>
+    <div class="footer-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+// Fade-up
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// UAD Countdown
+(function(){
+  const d = new Date('2026-11-02') - new Date();
+  if(d<=0) return;
+  const t = Math.floor(d/(864e5));
+  document.getElementById('cd-months').textContent = Math.floor(t/30);
+  document.getElementById('cd-days').textContent = t%30;
+})();
+
+// Chat demo switcher
+function switchDemo(role) {
+  document.querySelectorAll('.val-demo-body').forEach(d => d.style.display='none');
+  const demo = document.getElementById('demo-'+role);
+  if(demo) {
+    demo.style.display='flex';
+    demo.querySelectorAll('.val-demo-msg').forEach(m => { m.style.animation='none'; m.offsetHeight; m.style.animation=''; });
+  }
+  document.querySelectorAll('.val-demo-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.val-cap').forEach(c => c.classList.remove('active'));
+  const cap = document.querySelector('.val-cap[data-demo="'+role+'"]');
+  if(cap) cap.classList.add('active');
+}
+document.querySelectorAll('.val-cap').forEach(c => {
+  c.addEventListener('click', () => {
+    const tab = document.querySelector('.val-demo-tab[onclick*="'+c.dataset.demo+'"]');
+    if(tab) tab.click();
+  });
+});
+</script>
+
+</body>
+</html>
